@@ -1,0 +1,11 @@
+package*
+.prettierrc.json
+.eslintrc.json
+
+# any zip files
+*.zip
+
+# local lambda execution
+event.js
+lambda.js
+.vscode
