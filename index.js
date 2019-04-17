@@ -5,10 +5,14 @@ const wassengerToken = process.env.WASSENGER_TOKEN
 const chatGroup = process.env.WHATSAPP_GROUP
 
 exports.handler = async event => {
+    console.log(`Incoming event: ${JSON.stringify(event)}`)
+
+    // wassenger won't send messages properly with these characters
+    const unreadables = /[<>]/g
+
     let user
     let channel
-
-    console.log(JSON.stringify(event))
+    let response
 
     function getUsername(event) {
         const promise = new Promise(resolve => {
@@ -85,7 +89,9 @@ exports.handler = async event => {
     await getUsername(event)
     await getChannel(event)
 
-    const response = `_#${channel}_ *@${user}*: ${event.event.text}`
+    response = `_#${channel}_ *@${user}*: ${event.event.text}`
+
+    response = response.replace(unreadables, '')
     console.log(response)
     await sendMessage(response)
 
