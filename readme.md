@@ -34,11 +34,11 @@ Implemented serverlessly with [AWS Lambda](https://aws.amazon.com/lambda/), [AWS
 
 ## Files
 
--   [.vscode] - Settings to run the lambda function locally in VS Code. Create your own .env file with the environmental variables listed above to test locally.
--   [.eslintrc.json] - Using ESLint for linting.
--   [.packignore] - For the npm dev dependency 'repack-zip' that zips up all required files for uploading to Lambda.
--   [.prettierrc.json] - Formatting code with Prettier.
--   [index.js] - Lambda function.
--   [localEvent.js] - A test for running the lambda function locally.
--   [localRun.js] - The event for running the lambda function locally.
--   [package.json] - For node. Can run repack-zip with the command 'npm run build'.
+-   [.vscode](.vscode) - Settings to run the lambda function locally in VS Code. Create your own .env file with the environmental variables listed above to test locally.
+-   [.eslintrc.json](.eslintrc.json) - Using ESLint for linting.
+-   [.packignore](.packignore) - For the npm dev dependency 'repack-zip' that zips up all required files for uploading to Lambda.
+-   [.prettierrc.json](.prettierrc.json) - Formatting code with Prettier.
+-   [index.js](index.js) - Lambda function.
+-   [localEvent.js](localEvent.js) - A test for running the lambda function locally.
+-   [localRun.js](localRun.js) - The event for running the lambda function locally.
+-   [package.json](package.json) - For node. Can run repack-zip with the command 'npm run build'.
