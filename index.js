@@ -7,8 +7,20 @@ const chatGroup = process.env.WHATSAPP_GROUP
 exports.handler = async event => {
     console.log(`Incoming event: ${JSON.stringify(event)}`)
 
-    // wassenger won't send messages properly with these characters
-    const unreadables = /[<>]/g
+    // /* -- Slack event challege only needed once when setting up -- */
+    // /* -- Uncomment to validate API Gateway URL with Slack  -- */
+    // let response
+    // if(event.type === 'url_verification')
+    //     response = {
+    //         challenge: event.challenge
+    //     }
+
+    // else
+    //     response = {
+    //         statusCode: 200,
+    //         body: JSON.stringify('Hello from Lambda!'),
+    //     }
+    // return response
 
     let user
     let channel
@@ -91,21 +103,10 @@ exports.handler = async event => {
 
     response = `_#${channel}_ *@${user}*: ${event.event.text}`
 
+    // wassenger won't send messages properly with these characters
+    const unreadables = /[<>]/g
     response = response.replace(unreadables, '')
+
     console.log(response)
     await sendMessage(response)
-
-    // event challege only needed once
-    // let response
-    // if(event.type === 'url_verification')
-    //     response = {
-    //         challenge: event.challenge
-    //     }
-
-    // else
-    //     response = {
-    //         statusCode: 200,
-    //         body: JSON.stringify('Hello from Lambda!'),
-    //     }
-    // return response;
 }
